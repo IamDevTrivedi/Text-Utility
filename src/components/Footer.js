@@ -5,7 +5,6 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-r from-slate-800  to-slate-900 text-gray-300 py-8">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6 md:px-12">
-        {/* Logo and Description */}
         <div>
           <h2 className="text-2xl font-bold text-blue-400">Text Tools</h2>
           <p className="mt-4 text-sm">
@@ -16,7 +15,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Useful Links */}
         <div>
           <h3 className="text-xl font-semibold text-white mb-4">Useful Links</h3>
           <ul className="space-y-2">
@@ -43,7 +41,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Social Media and Contact Info */}
         <div>
           <h3 className="text-xl font-semibold text-white mb-4">Follow Us</h3>
 
@@ -59,7 +56,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Footer */}
       <div className="mt-8 border-t border-gray-700 pt-4">
         <p className="text-center text-sm text-gray-500">
           Made with <span className="text-red-500">&hearts;</span> by Text Tools Team.
