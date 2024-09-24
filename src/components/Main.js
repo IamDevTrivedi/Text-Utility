@@ -90,10 +90,6 @@ export default function Main() {
         const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
         return sentences.length;
     }
-    function countSentences() {
-        const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
-        return sentences.length;
-    }
     function longestSentence() {
         const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
         const longest = sentences.reduce((max, sentence) => Math.max(max, sentence.split(/\s+/).length), 0);
@@ -117,94 +113,87 @@ export default function Main() {
 
 
     return (
-        <div className='bg-blue-200 min-h-screen flex flex-col md:flex-row'>
-            <div className='w-full md:w-3/4 p-4 flex flex-col'>
-                <div className='flex-grow'>
-                    <h2 className='text-black text-xl mb-4 italic'>Enter Your Text Below</h2>
-                    <div className='flex-grow'>
-                        <textarea
-                            className='bg-blue-50 w-full h-[60vh] p-4 text-lg border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition duration-300'
-                            placeholder='Enter a piece of text here...' value={text} onChange={handleOnChange}
-                        ></textarea>
-                        <div className='grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 my-4'>
-                            <button className='bg-[#1E293B] py-2 px-4 text-sm rounded-md text-blue-200' id='copy-btn' onClick={handleCopyText}> Copy Text </button>
-                            <button className='bg-[#1E293B] py-2 px-4 text-sm rounded-md text-blue-200' onClick={handleClearText}> Clear </button>
-                            <button className='bg-[#1E293B] py-2 px-4 text-sm rounded-md text-blue-200' onClick={handleToUpperCase}> UPPER CASE </button>
-                            <button className='bg-[#1E293B] py-2 px-4 text-sm rounded-md text-blue-200' onClick={handleToLowerCase}> lower case </button>
-                            <button className='bg-[#1E293B] py-2 px-4 text-sm rounded-md text-blue-200' onClick={handleSentenceCase}> Sentence case </button>
-                            <button className='bg-[#1E293B] py-2 px-4 text-sm rounded-md text-blue-200' onClick={handleTitleCase}> Title Case </button>
-                            <button className='bg-[#1E293B] py-2 px-4 text-sm rounded-md text-blue-200' onClick={handleInverseCase}> inverse Case </button>
-                            <button className='bg-[#1E293B] py-2 px-4 text-sm rounded-md text-blue-200' onClick={handleSpeakText}> Speak </button>
-
-                        </div>
-
-                        <div className=''>
-
-                            <div className='text-2xl pt-3 mb-2 border-t-2 border-slate-900 italic'>Preview</div>
-                            <div onClick={handleCopyText} className='w-full bg-blue-50 text-wrap px-2 py-4 text-md rounded-lg whitespace-pre-wrap'>
-                                {text === "" ? "Enter a piece of text Above..." : text}
-                            </div>
-                        </div>
-
+        <div className='bg-[#EFF6FF] min-h-screen flex flex-col md:flex-row p-4'>
+            <div className='w-full md:w-3/4 p-4'>
+                <h2 className='text-gray-800 text-2xl mb-6 font-semibold'>Enter Your Text</h2>
+                <textarea
+                    className='bg-white shadow-md w-full h-72 p-4 text-lg border border-gray-200 rounded-lg focus:outline-none focus:border-blue-600 transition duration-300'
+                    placeholder='Type something here...' value={text} onChange={handleOnChange}
+                ></textarea>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-4 mt-6'>
+                    <button className='bg-blue-600 hover:bg-blue-500 py-2 px-4 text-white rounded-md' id='copy-btn' onClick={handleCopyText}>Copy</button>
+                    <button className='bg-gray-600 hover:bg-gray-500 py-2 px-4 text-white rounded-md' onClick={handleClearText}>Clear</button>
+                    <button className='bg-green-600 hover:bg-green-500 py-2 px-4 text-white rounded-md' onClick={handleToUpperCase}>UPPERCASE</button>
+                    <button className='bg-indigo-600 hover:bg-indigo-500 py-2 px-4 text-white rounded-md' onClick={handleToLowerCase}>lowercase</button>
+                    <button className='bg-purple-600 hover:bg-purple-500 py-2 px-4 text-white rounded-md' onClick={handleSentenceCase}>Sentence Case</button>
+                    <button className='bg-orange-600 hover:bg-orange-500 py-2 px-4 text-white rounded-md' onClick={handleTitleCase}>Title Case</button>
+                    <button className='bg-pink-600 hover:bg-pink-500 py-2 px-4 text-white rounded-md' onClick={handleInverseCase}>Inverse Case</button>
+                    <button className='bg-red-600 hover:bg-red-500 py-2 px-4 text-white rounded-md' onClick={handleSpeakText}>Speak</button>
+                </div>
+                <div className='mt-6'>
+                    <h3 className='text-gray-800 text-xl font-semibold mb-2'>Preview</h3>
+                    <div onClick={handleCopyText} className='bg-white shadow-md p-4 rounded-lg whitespace-pre-wrap text-gray-700'>
+                        {text === "" ? "Enter a piece of text above..." : text}
                     </div>
                 </div>
             </div>
 
-            <div className='bg-blue-200 border-l-2 border-slate-800 w-full md:w-1/4 p-4 flex flex-col'>
-                <h1 className='my-1 italic text-black text-xl mb-4'>Word Summary Report</h1>
-                <table className='table-auto w-full'>
+            <div className='w-full md:w-1/4 p-4 mt-6 md:mt-0 bg-white shadow-md rounded-lg'>
+                <h3 className='text-gray-800 text-xl font-semibold mb-4'>Text Summary</h3>
+                <table className='table-auto w-full text-left text-gray-700'>
                     <tbody>
-
                         <tr>
-                            <td className='text-black font-bold'>Character (with spaces):</td>
+                            <td className='font-bold'>Characters (with spaces):</td>
                             <td>{text.length}</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Character (without spaces):</td>
+                            <td className='font-bold'>Characters (without spaces):</td>
                             <td>{text.replace(/\s+/g, '').length}</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Words:</td>
-                            <td>{text === "" ? 0 : text.split(/\s+/).filter(word => word.length > 0).length}</td>
+                            <td className='font-bold'>Words:</td>
+                            <td>{text.split(/\s+/).filter(word => word.length > 0).length}</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Unique Words:</td>
+                            <td className='font-bold'>Unique Words:</td>
                             <td>{countUniqueWords()}</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Reading Time:</td>
+                            <td className='font-bold'>Reading Time:</td>
                             <td>{calculateReadingTime()} sec</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Speaking Time:</td>
+                            <td className='font-bold'>Speaking Time:</td>
                             <td>{calculateSpeakingTime()} sec</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Longest Sentence (words):</td>
+                            <td className='font-bold'>Longest Sentence (words):</td>
                             <td>{longestSentence()}</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Shortest Sentence (words):</td>
+                            <td className='font-bold'>Shortest Sentence (words):</td>
                             <td>{shortestSentence()}</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Avg. Sentence (words):</td>
-                            <td>{avgSentenceLengthWords()}</td>
+                            <td className='font-bold'>Total Sentences:</td>
+                            <td>{countSentences()}</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Avg. Sentence (chars):</td>
+                            <td className='font-bold'>Average Sentence Length (chars):</td>
                             <td>{avgSentenceLengthChars()}</td>
                         </tr>
                         <tr>
-                            <td className='text-black font-bold'>Avg. word length:</td>
-                            <td>{avgWordLength()}</td>
+                            <td className='font-bold'>Average Sentence Length (words):</td>
+                            <td>{avgSentenceLengthWords()}</td>
                         </tr>
-
                         <tr>
-                            <td className='text-black font-bold'>Lines:</td>
+                            <td className='font-bold'>Lines:</td>
                             <td>{countLines()}</td>
                         </tr>
-
+                        <tr>
+                            <td className='font-bold'>Average Word Length (chars):</td>
+                            <td>{avgWordLength()}</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
