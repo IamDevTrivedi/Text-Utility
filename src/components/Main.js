@@ -22,14 +22,34 @@ export default function Main() {
                 .join('')
         );
     }
+    let isSpeaking = false;
+    let utterance;
+
     function handleSpeakText() {
         if ('speechSynthesis' in window) {
-            const utterance = new SpeechSynthesisUtterance(text);
-            window.speechSynthesis.speak(utterance);
+            if (!isSpeaking) {
+
+                utterance = new SpeechSynthesisUtterance(text);
+                window.speechSynthesis.speak(utterance);
+                isSpeaking = true;
+                document.getElementById("speakBtn").innerHTML = "Pause";
+
+
+                utterance.onend = function () {
+                    isSpeaking = false;
+                    document.getElementById("speakBtn").innerHTML = "Speak";
+                };
+            } else {
+
+                window.speechSynthesis.cancel();
+                isSpeaking = false;
+                document.getElementById("speakBtn").innerHTML = "Speak";
+            }
         } else {
             alert("Sorry, your browser doesn't support text-to-speech.");
         }
     }
+
     function handleSentenceCase() {
         const formattedText = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
         setText(formattedText);
@@ -69,22 +89,22 @@ export default function Main() {
     function avgWordLength() {
         const words = text.split(/\s+/).filter(word => word.length > 0);
         const totalChars = words.reduce((sum, word) => sum + word.length, 0);
-        return words.length > 0 ? (totalChars / words.length).toFixed(2) : 0; // Return 0 if no words
+        return words.length > 0 ? (totalChars / words.length).toFixed(2) : 0;
     }
     function avgSentenceLengthChars() {
         const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
         const totalChars = sentences.reduce((sum, sentence) => sum + sentence.length, 0);
-        return sentences.length > 0 ? (totalChars / sentences.length).toFixed(2) : 0; // Return 0 if no sentences
+        return sentences.length > 0 ? (totalChars / sentences.length).toFixed(2) : 0;
     }
     function avgSentenceLengthWords() {
         const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
         const totalWords = sentences.reduce((sum, sentence) => sum + sentence.split(/\s+/).length, 0);
-        return sentences.length > 0 ? (totalWords / sentences.length).toFixed(2) : 0; // Return 0 if no sentences
+        return sentences.length > 0 ? (totalWords / sentences.length).toFixed(2) : 0;
     }
     function shortestSentence() {
         const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
         const shortest = sentences.reduce((min, sentence) => Math.min(min, sentence.split(/\s+/).length), Infinity);
-        return shortest === Infinity ? 0 : shortest; // Return 0 if no sentences are found
+        return shortest === Infinity ? 0 : shortest;
     }
     function countSentences() {
         const sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0);
@@ -128,7 +148,7 @@ export default function Main() {
                     <button className='bg-purple-600 hover:bg-purple-500 py-2 px-4 text-white rounded-md' onClick={handleSentenceCase}>Sentence Case</button>
                     <button className='bg-orange-600 hover:bg-orange-500 py-2 px-4 text-white rounded-md' onClick={handleTitleCase}>Title Case</button>
                     <button className='bg-pink-600 hover:bg-pink-500 py-2 px-4 text-white rounded-md' onClick={handleInverseCase}>Inverse Case</button>
-                    <button className='bg-red-600 hover:bg-red-500 py-2 px-4 text-white rounded-md' onClick={handleSpeakText}>Speak</button>
+                    <button className='bg-red-600 hover:bg-red-500 py-2 px-4 text-white rounded-md' id='speakBtn' onClick={handleSpeakText}>Speak</button>
                 </div>
                 <div className='mt-6'>
                     <h3 className='text-gray-800 text-xl font-semibold mb-2'>Preview</h3>

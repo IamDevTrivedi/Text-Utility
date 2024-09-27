@@ -15,6 +15,9 @@ export default function Navbar() {
           Home
         </button>
         <button className='hover:bg-blue-600 focus:bg-blue-700 text-white font-semibold py-2 px-5 rounded transition duration-300 ease-in-out'>
+          Services
+        </button>
+        <button className='hover:bg-blue-600 focus:bg-blue-700 text-white font-semibold py-2 px-5 rounded transition duration-300 ease-in-out'>
           About Us
         </button>
       </div>
