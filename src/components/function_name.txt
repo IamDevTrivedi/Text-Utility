@@ -14,7 +14,7 @@
 --count words
 --count unique words 
 
---Sentence
+--Sentence 
 --longest Sentence
 --shortest Sentence
 --Sentence avg - characters 
