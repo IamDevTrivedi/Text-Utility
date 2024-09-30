@@ -1,6 +1,3 @@
-
-
-import { Backpack } from 'lucide-react';
 import React, { useState } from 'react'
 
 export default function Workspace({ darkMode, toggleDarkMode }) {
