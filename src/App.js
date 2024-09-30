@@ -17,10 +17,10 @@ function App() {
     <div className={darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-100 text-white'}>
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <Workspace darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Footer darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <ServicesPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <AboutPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <ContactUsPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Footer darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
     </div>
   );
 }
