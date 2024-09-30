@@ -1,8 +1,19 @@
 import React, { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Workspace({ darkMode, toggleDarkMode }) {
 
     const [text, setText] = useState("");
+    const notifyInfo = (message) => toast.info(message, {
+        position: "bottom-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: darkMode ? 'dark' : 'light',
+    });
 
     function handleOnChange(event) {
         setText(event.target.value);
@@ -10,15 +21,18 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
 
     function handleToUpper() {
         setText(text.toUpperCase());
+        notifyInfo("Converted To Upper Case");
     }
 
     function handleToLower() {
         setText(text.toLowerCase());
+        notifyInfo("Converted To Lower Case");
     }
 
     function handleCopy() {
         navigator.clipboard.writeText(text);
 
+        notifyInfo("Copied To Clipboard");
         document.getElementById('copyBtn').innerHTML = "Copied";
         setTimeout(() => {
             document.getElementById('copyBtn').innerHTML = "Copy Text";
@@ -27,17 +41,20 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
 
     function handleClear() {
         setText("");
+        notifyInfo("Textbox Cleared");
     }
 
     function handleToTitle() {
 
         let newText = text.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
         setText(newText);
+        notifyInfo("converted To Title Case");
     }
     function handleToSentence() {
 
         let newText = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
         setText(newText);
+        notifyInfo("converted To Sentence Case");
     }
 
 
@@ -52,6 +69,7 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
             }
         }
         setText(newText);
+        notifyInfo("Case Inverted");
     }
 
     function countCharacterWithSpace() {
@@ -114,7 +132,6 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         const characters = countCharacterWithoutSpace();
         return ((characters / words).toFixed(2));
     }
-
 
     let isSpeaking = false;
     let utterance;
@@ -347,6 +364,20 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
 
                 </div>
             </div>
+
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2500}
+                limit={3}
+                hideProgressBar={false}
+                newestOnTop
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme={darkMode ? 'dark' : 'light'}
+            />
         </div>
     )
 }
