@@ -7,7 +7,6 @@
 --to inverse 
 --speak
 
-
 --count character without space 
 --count character with space
 
