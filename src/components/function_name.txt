@@ -12,13 +12,13 @@
 --count character with space
 
 --count words
-count unique words 
+--count unique words 
 
-Sentence
-longest Sentence
-shortest Sentence
-Sentence avg - characters 
-Sentence avg - words
+--Sentence
+--longest Sentence
+--shortest Sentence
+--Sentence avg - characters 
+--Sentence avg - words
 
 --word avg - character
 
