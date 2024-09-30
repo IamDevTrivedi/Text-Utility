@@ -1,40 +1,40 @@
 import React from 'react';
 import SocialLinks from './SocialLinks';
 
-export default function Footer() {
+export default function Footer({ darkMode, toggleDarkMode }) {
   return (
-    <footer className="bg-gradient-to-r from-slate-800  to-slate-900 text-gray-300 py-8">
+    <footer className={`transition-all-colors duration-200 ${darkMode ? 'bg-gray-900' : 'bg-gray-100'} ${darkMode ? 'text-white' : 'text-gray-800'} py-8 border-t border-black`}>
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6 md:px-12">
         <div>
-          <h2 className="text-2xl font-bold text-blue-400">Text Tools</h2>
-          <p className="mt-4 text-sm">
+          <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>Text Tools</h2>
+          <p className={`${darkMode ? 'text-white' : 'text-gray-800'} mt-4 text-sm`}>
             A powerful suite of tools to manipulate and format text. Fast, secure, and easy to use.
           </p>
-          <p className="mt-4 text-sm text-gray-500">
+          <p className={`mt-4 text-sm opacity-80 ${darkMode ? 'text-white' : 'text-gray-800'}`}>
             &copy; {new Date().getFullYear()} Text Tools. All rights reserved.
           </p>
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-white mb-4">Useful Links</h3>
+          <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Useful Links</h3>
           <ul className="space-y-2">
             <li>
-              <a href="/" className="hover:text-blue-400 transition duration-300">
+              <a href="/">
                 Home
               </a>
             </li>
             <li>
-              <a href="/about" className="hover:text-blue-400 transition duration-300">
+              <a href="/about">
                 About Us
               </a>
             </li>
             <li>
-              <a href="/services" className="hover:text-blue-400 transition duration-300">
+              <a href="/services">
                 Services
               </a>
             </li>
             <li>
-              <a href="/contact" className="hover:text-blue-400 transition duration-300">
+              <a href="/contact">
                 Contact Us
               </a>
             </li>
@@ -42,16 +42,16 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="text-xl font-semibold text-white mb-4">Follow Us</h3>
+          <h3 className={`${darkMode ? 'text-white' : 'text-gray-800'} text-xl font-semibold mb-4`}>Follow Us</h3>
 
           <SocialLinks />
 
-          <h3 className="text-xl font-semibold text-white mt-6 mb-4">Contact Us</h3>
+          <h3 className={`text-xl font-semibold ${darkMode ? 'text-white' : 'text-gray-800'} mt-6 mb-4`}>Contact Us</h3>
           <p className="text-sm">
-            Email: <a href="mailto:support@texttools.com" className="hover:text-blue-400">support@texttools.com</a>
+            Email: <a href="mailto:support@texttools.com" className="">support@texttools.com</a>
           </p>
           <p className="text-sm">
-            Phone: <a href="tel:+123456789" className="hover:text-blue-400">+1 234 567 89</a>
+            Phone: <a href="tel:+123456789" className="">+1 234 567 89</a>
           </p>
         </div>
       </div>

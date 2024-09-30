@@ -1,4 +1,3 @@
-// /src/components/ServicesPage.js
 import React from 'react';
 
 const ServicesPage = () => {
