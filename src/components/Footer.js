@@ -4,7 +4,7 @@ import SocialLinks from './SocialLinks';
 export default function Footer({ darkMode, toggleDarkMode }) {
   return (
     <footer className={`transition-all-colors duration-200 ${darkMode ? 'bg-gray-900' : 'bg-gray-100'} ${darkMode ? 'text-white' : 'text-gray-800'} py-8 border-t border-black`}>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6 md:px-12">
+      <div className="container grid grid-cols-1 gap-8 px-6 mx-auto md:grid-cols-3 md:px-12">
         <div>
           <h2 className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>Text Tools</h2>
           <p className={`${darkMode ? 'text-white' : 'text-gray-800'} mt-4 text-sm`}>
@@ -56,8 +56,8 @@ export default function Footer({ darkMode, toggleDarkMode }) {
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-700 pt-4">
-        <p className="text-center text-sm text-gray-500">
+      <div className="pt-4 mt-8 border-t border-gray-700">
+        <p className="text-sm text-center text-gray-500">
           Made with <span className="text-red-500">&hearts;</span> by Text Tools Team.
         </p>
       </div>

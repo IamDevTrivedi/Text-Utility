@@ -8,11 +8,11 @@ const ServicesPage = ({ darkMode, toggleDarkMode }) => {
         ${darkMode ? 'text-blue-300' : 'text-blue-900'}`}>
         Our Services
       </h1>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {/* Service 1 */}
-        <div className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 
-          ${darkMode ? 'bg-gray-800' : 'bg-blue-50'}`}>
+        <div className={`p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 
+          ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
           <h2 className={`text-2xl font-semibold mb-4 
             ${darkMode ? 'text-blue-300' : 'text-blue-800'}`}>
             Text Transformation
@@ -23,8 +23,8 @@ const ServicesPage = ({ darkMode, toggleDarkMode }) => {
         </div>
 
         {/* Service 2 */}
-        <div className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 
-          ${darkMode ? 'bg-gray-800' : 'bg-blue-50'}`}>
+        <div className={`p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 
+          ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
           <h2 className={`text-2xl font-semibold mb-4 
             ${darkMode ? 'text-blue-300' : 'text-blue-800'}`}>
             Word Statistics
@@ -35,8 +35,8 @@ const ServicesPage = ({ darkMode, toggleDarkMode }) => {
         </div>
 
         {/* Service 3 */}
-        <div className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 
-          ${darkMode ? 'bg-gray-800' : 'bg-blue-50'}`}>
+        <div className={`p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 
+          ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
           <h2 className={`text-2xl font-semibold mb-4 
             ${darkMode ? 'text-blue-300' : 'text-blue-800'}`}>
             Text Preview
@@ -47,8 +47,8 @@ const ServicesPage = ({ darkMode, toggleDarkMode }) => {
         </div>
 
         {/* Service 4 */}
-        <div className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 
-          ${darkMode ? 'bg-gray-800' : 'bg-blue-50'}`}>
+        <div className={`p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 
+          ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
           <h2 className={`text-2xl font-semibold mb-4 
             ${darkMode ? 'text-blue-300' : 'text-blue-800'}`}>
             Text-to-Speech
@@ -59,8 +59,8 @@ const ServicesPage = ({ darkMode, toggleDarkMode }) => {
         </div>
 
         {/* Service 5 */}
-        <div className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 
-          ${darkMode ? 'bg-gray-800' : 'bg-blue-50'}`}>
+        <div className={`p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 
+          ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
           <h2 className={`text-2xl font-semibold mb-4 
             ${darkMode ? 'text-blue-300' : 'text-blue-800'}`}>
             Text Cleaning
@@ -71,8 +71,8 @@ const ServicesPage = ({ darkMode, toggleDarkMode }) => {
         </div>
 
         {/* Service 6 */}
-        <div className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 
-          ${darkMode ? 'bg-gray-800' : 'bg-blue-50'}`}>
+        <div className={`p-6 rounded-lg shadow-lg hover:shadow-2xl transition duration-300 
+          ${darkMode ? 'bg-gray-800' : 'bg-gray-50'}`}>
           <h2 className={`text-2xl font-semibold mb-4 
             ${darkMode ? 'text-blue-300' : 'text-blue-800'}`}>
             Copy & Clear Text
