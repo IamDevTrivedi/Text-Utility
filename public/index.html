@@ -114,53 +114,44 @@
       height: 0;
     }
 
-    /* Custom Scrollbar Styles */
-    :root {
-      --scrollbar-thumb: #9ca3af;
-      /* Tailwind's gray-400 */
-      --scrollbar-track: #f3f4f6;
-      /* Tailwind's gray-100 */
-      --scrollbar-width: 12px;
-    }
-
-    /* For webkit-based browsers (Chrome, Safari, etc.) */
+    /* For WebKit browsers (Chrome, Safari) */
     ::-webkit-scrollbar {
-      width: var(--scrollbar-width);
+      width: 10px;
+      /* Slimmer scrollbar */
+      background-color: transparent;
+      /* Transparent background */
     }
 
     ::-webkit-scrollbar-track {
-      background: var(--scrollbar-track);
+      background-color: rgba(107, 114, 128, 0.4);
+      /* Slightly transparent gray (bg-gray-600) */
     }
 
     ::-webkit-scrollbar-thumb {
-      background: var(--scrollbar-thumb);
-      border-radius: 6px;
-      border: 3px solid var(--scrollbar-track);
+      background-color: rgba(156, 163, 175, 0.7);
+      /* Lighter gray for the thumb (bg-gray-400) */
+      border-radius: 10px;
+      /* Rounded edges for a smooth look */
+      border: 2px solid transparent;
+      /* Space around the thumb */
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: #6b7280;
-      /* Tailwind's gray-500 for hover effect */
+      background-color: rgba(156, 163, 175, 0.9);
+      /* Darker on hover for interactivity */
     }
 
     /* For Firefox */
     * {
       scrollbar-width: thin;
-      scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+      scrollbar-color: rgba(156, 163, 175, 0.7) transparent;
     }
 
-    /* Dark mode adjustments */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --scrollbar-thumb: #4b5563;
-        /* Tailwind's gray-600 */
-        --scrollbar-track: #1f2937;
-        /* Tailwind's gray-800 */
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: #6b7280;
-        /* Tailwind's gray-500 for hover effect */
+    /* Optional: Styling scrollbar for Edge */
+    @supports (-ms-overflow-style: none) {
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(156, 163, 175, 0.7) transparent;
       }
     }
   </style>
