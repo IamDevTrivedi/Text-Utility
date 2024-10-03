@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const NavbarItem = ({ children, darkMode }) => (
-  <button className={`text-sm font-medium ${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-700 hover:text-black'} px-3 py-2 rounded-md ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-300'} transition-colors`}>
+const NavbarItem = ({ to, children, darkMode }) => (
+  <Link
+    to={to}
+    className={`text-sm font-medium ${darkMode ? 'text-gray-400 hover:text-white' : 'text-gray-700 hover:text-black'} px-3 py-2 rounded-md ${darkMode ? 'hover:bg-gray-700' : 'hover:bg-gray-300'} transition-colors`}
+  >
     {children}
-  </button>
+  </Link>
 );
 
 export default function Navbar({ darkMode, toggleDarkMode }) {
@@ -13,17 +17,17 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
     <header className={`transition-colors duration-200 ${darkMode ? 'bg-gray-900' : 'bg-gray-100'} shadow-md sticky top-0 z-50`}>
       <div className="px-4 max-w-8xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="/" className="flex items-center flex-shrink-0">
+          <Link to="/" className="flex items-center flex-shrink-0">
             <div className='flex flex-col items-center justify-center gap-3 md:flex-row'>
               <span className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>Text-Utilities</span>
               <span className={`hidden md:block text-sm font-extralight ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>Manipulate Text Easily</span>
             </div>
-          </a>
+          </Link>
           <nav className="items-center hidden md:flex">
-            <NavbarItem darkMode={darkMode}>Home</NavbarItem>
-            <NavbarItem darkMode={darkMode}>Services</NavbarItem>
-            <NavbarItem darkMode={darkMode}>About Us</NavbarItem>
-            <NavbarItem darkMode={darkMode}>Contact</NavbarItem>
+            <NavbarItem to="/" darkMode={darkMode}>Home</NavbarItem>
+            <NavbarItem to="/services" darkMode={darkMode}>Services</NavbarItem>
+            <NavbarItem to="/about" darkMode={darkMode}>About Us</NavbarItem>
+            <NavbarItem to="/contact" darkMode={darkMode}>Contact</NavbarItem>
 
             <label className="mx-3 ui-switch">
               <input type="checkbox" checked={darkMode} onChange={toggleDarkMode} />
@@ -61,10 +65,10 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
       </div>
       <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
         <div className="flex items-center justify-around px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <NavbarItem darkMode={darkMode}>Home</NavbarItem>
-          <NavbarItem darkMode={darkMode}>Services</NavbarItem>
-          <NavbarItem darkMode={darkMode}>About Us</NavbarItem>
-          <NavbarItem darkMode={darkMode}>Contact</NavbarItem>
+          <NavbarItem to="/" darkMode={darkMode}>Home</NavbarItem>
+          <NavbarItem to="/services" darkMode={darkMode}>Services</NavbarItem>
+          <NavbarItem to="/about" darkMode={darkMode}>About Us</NavbarItem>
+          <NavbarItem to="/contact" darkMode={darkMode}>Contact</NavbarItem>
 
           <label className="ui-switch">
             <input type="checkbox" checked={darkMode} onChange={toggleDarkMode} />

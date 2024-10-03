@@ -1,6 +1,10 @@
 import React from 'react';
 
 const AboutPage = ({ darkMode, toggleDarkMode }) => {
+
+  document.title = 'Text Utilities | About Us'; 
+
+
   return (
     <div className={`max-w-4xl mx-auto p-6 rounded-lg shadow-md mt-10 
       ${darkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>

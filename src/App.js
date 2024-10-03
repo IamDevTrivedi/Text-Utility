@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Workspace from './components/Workspace';
@@ -14,14 +15,18 @@ function App() {
   };
 
   return (
-    <div className={darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-100 text-white'}>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Workspace darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <ServicesPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <AboutPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <ContactUsPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Footer darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-    </div>
+    <Router>
+      <div className={darkMode ? 'dark bg-gray-900 text-white' : 'bg-gray-100 text-white'}>
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <Routes>
+          <Route path="/" element={<Workspace darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+          <Route path="/services" element={<ServicesPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+          <Route path="/about" element={<AboutPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+          <Route path="/contact" element={<ContactUsPage darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
+        </Routes>
+        <Footer darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      </div>
+    </Router>
   );
 }
 

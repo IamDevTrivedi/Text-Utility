@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SocialLinks from './SocialLinks';
 
 export default function Footer({ darkMode, toggleDarkMode }) {
@@ -19,24 +20,16 @@ export default function Footer({ darkMode, toggleDarkMode }) {
           <h3 className={`text-xl font-semibold mb-4 ${darkMode ? 'text-white' : 'text-gray-800'}`}>Useful Links</h3>
           <ul className="space-y-2">
             <li>
-              <a href="/">
-                Home
-              </a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/about">
-                About Us
-              </a>
+              <Link to="/about">About Us</Link>
             </li>
             <li>
-              <a href="/services">
-                Services
-              </a>
+              <Link to="/services">Services</Link>
             </li>
             <li>
-              <a href="/contact">
-                Contact Us
-              </a>
+              <Link to="/contact">Contact Us</Link>
             </li>
           </ul>
         </div>
