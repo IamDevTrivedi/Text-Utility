@@ -25,7 +25,7 @@ const ContactUsPage = ({ darkMode, toggleDarkMode }) => {
 
 
     return (
-        <div className={`max-w-4xl mx-auto p-6 mt-10 ${darkMode ? 'bg-gray-900' : 'bg-gray-100'} rounded-lg`}>
+        <div className={`my-4 max-w-4xl mx-auto p-6 mt-10 ${darkMode ? 'bg-gray-900' : 'bg-gray-100'} rounded-lg`}>
             <h1 className={`text-4xl font-bold text-center mb-8 ${darkMode ? 'text-blue-300' : 'text-blue-900'}`}>Contact Us</h1>
 
             {/* Contact Information */}
