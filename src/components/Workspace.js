@@ -15,20 +15,24 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         theme: darkMode ? 'dark' : 'light',
     });
 
+    // note: ok valid
     function handleOnChange(event) {
         setText(event.target.value);
     }
 
+    // note: ok valid
     function handleToUpper() {
         setText(text.toUpperCase());
         notifyInfo("Converted To Upper Case");
     }
 
+    // note: ok valid
     function handleToLower() {
         setText(text.toLowerCase());
         notifyInfo("Converted To Lower Case");
     }
 
+    // note: ok valid
     function handleCopy() {
         navigator.clipboard.writeText(text);
 
@@ -39,25 +43,31 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         }, 2000);
     }
 
+    // note: ok valid
     function handleClear() {
         setText("");
         notifyInfo("Textbox Cleared");
     }
 
+    // note: ok valid
     function handleToTitle() {
 
         let newText = text.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
         setText(newText);
         notifyInfo("converted To Title Case");
     }
-    function handleToSentence() {
 
-        let newText = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+    // note: ok valid
+    function handleToSentence() {
+        let newText = text
+            .split(/([.!?]\s*)/)
+            .map(sentence => sentence.charAt(0).toUpperCase() + sentence.slice(1).toLowerCase())
+            .join('');
         setText(newText);
-        notifyInfo("converted To Sentence Case");
+        notifyInfo("Converted to Sentence Case");
     }
 
-
+    // note: ok valid
     function handleInverse() {
         let newText = "";
         for (let c of text) {
@@ -72,10 +82,12 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         notifyInfo("Case Inverted");
     }
 
+    // note: ok valid
     function countCharacterWithSpace() {
         return text.length;
     }
 
+    // note: ok valid
     function countCharacterWithoutSpace() {
         let count = 0;
         for (let i = 0; i < text.length; ++i) {
@@ -86,26 +98,36 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         return count;
     }
 
+    // note: ok valid
     function countWords() {
-        return text.trim().split(/\s+/).length;
+        return text.trim().split(/\s+/).filter((element) => {
+            return element.length !== 0;
+        }).length;
     }
 
+    // note: ok valid
     function countUniqueWords() {
-        let words = text.trim().toLowerCase().split(/\s+/);
+        let words = text.trim().toLowerCase().split(/\s+/).filter((element) => {
+            return element.length !== 0;
+        });
         let uniqueWords = new Set(words);
         return uniqueWords.size;
     }
 
+    // bug: Words are Increasing upon Line increment
     function countLines() {
-        return text.split(/\r?\n/).length;
+        return text.split(/\r?\n/).filter(line => line.trim().length > 0).length;
     }
 
+    // note: ok valid
     function formatTime(seconds) {
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = Math.floor(seconds % 60);
         return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     }
 
+
+    // note: ok valid
     function readingTime() {
         const words = countWords();
         const readingSpeed = 200;
@@ -113,6 +135,7 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         return formatTime(timeInSeconds);
     }
 
+    // note: ok valid
     function speakingTime() {
         const words = countWords();
         const speakingSpeed = 130;
@@ -120,6 +143,7 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         return formatTime(timeInSeconds);
     }
 
+    // note: ok valid
     function writingTime() {
         const words = countWords();
         const writingSpeed = 40;
@@ -127,15 +151,18 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         return formatTime(timeInSeconds);
     }
 
+    // note: ok valid
     function AvgCharacterPerWord() {
         const words = countWords();
+        if (words === 0) return 0;
         const characters = countCharacterWithoutSpace();
-        return ((characters / words).toFixed(2));
+        return (characters / words).toFixed(2);
     }
 
     let isSpeaking = false;
     let utterance;
 
+    // note: ok valid
     function handleSpeak() {
         if ('speechSynthesis' in window) {
             if (!isSpeaking) {
@@ -161,24 +188,30 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         }
     }
 
+    // note: ok valid
     function countSentences() {
         let sentences = text.split(/[.!?]+/);
         sentences = sentences.filter(sentence => sentence.trim().length > 0);
         return sentences.length;
     }
 
+    // note: ok valid
     function AvgCharacterPerSentence() {
         const sentences = countSentences();
+        if (sentences === 0) return 0;
         const characters = countCharacterWithoutSpace();
-        return ((characters / sentences).toFixed(2));
+        return (characters / sentences).toFixed(2);
     }
 
+    // note: ok valid
     function AvgWordPerSentence() {
         const sentences = countSentences();
+        if (sentences === 0) return 0; // Avoid division by zero
         const words = countWords();
-        return ((words / sentences).toFixed(2));
+        return (words / sentences).toFixed(2);
     }
 
+    // note: ok valid
     function findLongestSentence() {
 
         let sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).map(sentence => sentence.trim());
@@ -187,16 +220,17 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         }
 
         const countWords = (sentence) => sentence.split(/\s+/).filter(word => word.length > 0).length;
-        let shortest = sentences[0];
+        let longest = sentences[0];
         for (let i = 1; i < sentences.length; i++) {
-            if (countWords(sentences[i]) > countWords(shortest)) {
-                shortest = sentences[i];
+            if (countWords(sentences[i]) > countWords(longest)) {
+                longest = sentences[i];
             }
         }
 
-        return countWords(shortest);
+        return countWords(longest);
     }
 
+    // note: ok valid
     function findShortestSentence() {
 
         let sentences = text.split(/[.!?]+/).filter(sentence => sentence.trim().length > 0).map(sentence => sentence.trim());
@@ -215,7 +249,7 @@ export default function Workspace({ darkMode, toggleDarkMode }) {
         return countWords(shortest);
     }
 
-    document.title = 'Text Utilities | Home' ; 
+    document.title = 'Text Utilities | Home';
 
     return (
         <div className={`max-w-7xl mx-auto ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
